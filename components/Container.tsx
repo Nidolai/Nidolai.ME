@@ -10,9 +10,9 @@ export default function Container(props: any) {
 
     const meta = {
         title: 'Nidolai | Nicolai',
-        description: 'DevOps Engineer',
+        description: 'Passionate DevOps Engineer from Denmark',
         type: 'website',
-        image: 'https://nidolai.me/icon.png',
+        image: 'https://nidolai.me/avatar/Avatar-255x255.png',
         ...customMeta
     }
 

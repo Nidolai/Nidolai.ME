@@ -21,7 +21,15 @@ export default function Container(props: any) {
             <Head>
                 <title>{meta.title} - {meta.subTitle}</title>
                 <meta name="description" content={meta.description} />
-                <link rel="icon" href="/favicon.ico" />
+
+                {/* Favicon */}
+                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+                <link rel="manifest" href="/site.webmanifest" />
+                <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#111111" />
+                <meta name="msapplication-TileColor" content="#ffffff" />
+                <meta name="theme-color" content="#111111" />
 
                 {/* Open Graph Card */}
                 <meta property="og:url" content={`https://nidolai.me${router.asPath}`} />

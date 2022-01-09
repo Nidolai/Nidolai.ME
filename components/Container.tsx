@@ -17,7 +17,7 @@ export default function Container(props: any) {
     }
 
     return (
-        <div className="flex flex-col px-3">
+        <>
             <Head>
                 <title>{meta.title} - {meta.subTitle}</title>
                 <meta name="description" content={meta.description} />
@@ -38,6 +38,6 @@ export default function Container(props: any) {
                 {children}
             </main>
             <Footer />
-        </div>
+        </>
     )
 }

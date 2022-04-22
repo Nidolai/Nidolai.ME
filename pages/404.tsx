@@ -1,6 +1,5 @@
 import { NextPage } from "next";
 import Container from "../components/Container";
-import TopTracks from "../components/TopTracks";
 
 const Custom404: NextPage = () => {
     return (

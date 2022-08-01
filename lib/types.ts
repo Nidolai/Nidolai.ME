@@ -1,12 +1,3 @@
-export type SpotifyNowPlayingSong = {
-    isPlaying: boolean;
-    title: string;
-    artist: string;
-    album: string;
-    albumImageUrl: string;
-    songUrl: string;
-}
-
 export type SpotifySong = {
     title: string;
     artist: string;
@@ -14,6 +5,10 @@ export type SpotifySong = {
     albumImageUrl: string;
     songUrl: string;
 };
+
+export type SpotifyNowPlayingSong = SpotifySong & {
+    isPlaying: boolean;
+}
 
 export type SpotifyTopTracks = {
     tracks: SpotifySong[];

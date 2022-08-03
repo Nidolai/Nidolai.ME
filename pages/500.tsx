@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import type { NextPage } from 'next'
 import Container from "../components/Container";
 
 const Custom500: NextPage = () => {

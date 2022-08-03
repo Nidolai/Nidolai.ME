@@ -16,10 +16,12 @@ export default function Container(props: any) {
         ...customMeta
     }
 
+    const pageTitle = `${meta.title} - ${meta.subTitle}`
+
     return (
         <>
             <Head>
-                <title>{meta.title} - {meta.subTitle}</title>
+                <title>{pageTitle}</title>
                 <meta name="description" content={meta.description} />
 
                 {/* Open Graph Card */}

@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 export default function ThemeSwitcher() {
     const [mounted, setMounted] = useState(false)
     const { theme, setTheme } = useTheme()
-  
+
     // When mounted on client we can show the UI
     useEffect(() => setMounted(true), [])
 

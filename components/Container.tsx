@@ -16,7 +16,7 @@ export default function Container(props: any) {
         ...customMeta
     }
 
-    const pageTitle = `${meta.title} - ${meta.subTitle}`
+    const pageTitle = `${meta.title} - Nidolai | Nicolai`
 
     return (
         <>
@@ -34,8 +34,12 @@ export default function Container(props: any) {
 
                 {/* Twitter Card */}
                 <meta name="twitter:card" content="summary" />
+
+                {meta.date && (
+                    <meta property="article:published_time" content={meta.date} />
+                )}
             </Head>
-            <main className="flex flex-auto justify-center">
+            <main className="flex flex-auto justify-center px-2">
                 <ThemeSwitcher />
                 {children}
             </main>

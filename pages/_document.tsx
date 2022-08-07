@@ -14,7 +14,7 @@ class CustomDocument extends Document {
           <meta name="msapplication-TileColor" content="#ffffff" />
           <meta name="theme-color" content="#111111" />
         </Head>
-        <body className="bg-gray-50 dark:bg-gray-900 text-black dark:text-white">
+        <body>
           <Main />
           <NextScript />
         </body>

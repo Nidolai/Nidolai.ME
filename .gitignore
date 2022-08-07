@@ -41,3 +41,6 @@ robots.txt
 
 # sitemap
 sitemap*.xml
+
+# Contentlayer
+.contentlayer

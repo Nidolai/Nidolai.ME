@@ -9,11 +9,11 @@ export default function TopTracks() {
     return (
         <>
             {error ? (
-                <div className="mt-5 text-center">Failed To Load Spotify Tracks...</div>
+                <div className="mt-4 text-center">Failed To Load Spotify Tracks...</div>
             ) : (
                 <>
                     {!data ? (
-                        <div className="mt-5 text-center">Loading Spotify Tracks...</div>
+                        <div className="mt-4 text-center">Loading Spotify Tracks...</div>
                     ) : (
                         <div className="grid w-full grid-cols-1 gap-3 my-2 mt-4 sm:grid-cols-2">
                             {data.tracks.map((track, index) => (

@@ -14,7 +14,7 @@ const Blog = ({ posts }: InferGetStaticPropsType<typeof getStaticProps>) => {
     return (
         <Container title="Blog">
             <div className="flex flex-col items-start justify-center max-w-2xl mx-auto">
-                <h1 className="mb-4 text-3xl font-bold tracking-tight md:text-5xl dark:text-white">Blog</h1>
+                <h1 className="mb-4 text-3xl font-bold tracking-tight sm:text-5xl dark:text-white">Blog</h1>
                 <p className="dark:text-gray-400 mb-4">
                     Welcome to my new blog, here I'll mostly write about tech and other cool projects I'm currently working on. In total, I've written {allPosts.length} articles.
                 </p>

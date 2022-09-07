@@ -17,7 +17,7 @@ export async function getStaticProps({ params }: any) {
   return { props: { post } };
 }
 
-const PostPage = ({ post }: { post: Post }) => {
+export default function PostPage({ post }: { post: Post }) {
   const MDXContent = useMDXComponent(post.body.code)
 
   return (
@@ -26,5 +26,3 @@ const PostPage = ({ post }: { post: Post }) => {
     </BlogLayout>
   )
 }
-
-export default PostPage

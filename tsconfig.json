@@ -20,16 +20,14 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "contentlayer/generated": ["./.contentlayer/generated"],
-      "contentlayer/types": ["./.contentlayer/generated/types"]
+      "contentlayer/generated": ["./.contentlayer/generated"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".contentlayer/generated",
-    ".contentlayer/generated/types"
+    ".contentlayer/generated"
   ],
   "exclude": [
     "node_modules"

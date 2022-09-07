@@ -1,5 +1,5 @@
 import Container from "components/Container";
-import type { Post } from "contentlayer/types";
+import { Post } from "contentlayer/generated";
 import { format, parseISO } from "date-fns";
 import Image from "next/image";
 import Link from "next/link";

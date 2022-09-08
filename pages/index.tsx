@@ -5,7 +5,7 @@ import Typewriter from 'typewriter-effect';
 const Home: NextPage = () => {
   return (
     <Container
-      subTitle="Home"
+      title="Home"
     >
       <div className="max-w-2xl w-full my-auto text-3xl text-center">
         <Typewriter

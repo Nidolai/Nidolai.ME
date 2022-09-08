@@ -2,7 +2,7 @@ import useSWR from 'swr';
 import fetcher from '../lib/fetcher';
 import Link from 'next/link';
 import { SpotifyNowPlayingSong } from '../lib/types';
-import { siGithub, siSpotify, siSteam, siMicrosoftoutlook, siLinkedin } from 'simple-icons/icons';
+import { siGithub, siSpotify, siSteam, siMicrosoftoutlook } from 'simple-icons/icons';
 
 export default function Footer() {
     const { data, error } = useSWR<SpotifyNowPlayingSong>('/api/now-playing', fetcher);
@@ -61,6 +61,10 @@ export default function Footer() {
                 <div className="flex flex-col space-y-4 sm:text-left">
                     <Link href="/" passHref>
                         <a className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg">Home</a>
+                    </Link>
+
+                    <Link href="/blog" passHref>
+                        <a className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg">Blog</a>
                     </Link>
                 </div>
 

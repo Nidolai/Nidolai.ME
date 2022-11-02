@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "contentlayer": "^0.2.7",
+    "contentlayer": "^0.2.8",
     "date-fns": "^2.29.1",
     "next": "^12.2.5",
     "next-contentlayer": "^0.2.7",

@@ -59,18 +59,18 @@ export default function Footer() {
             {/* Links */}
             <div className="w-full max-w-2xl grid grid-cols-1 gap-4 mb-4 sm:grid-cols-3 text-center">
                 <div className="flex flex-col space-y-4 sm:text-left">
-                    <Link href="/" passHref>
-                        <a className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg">Home</a>
+                    <Link href="/" className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg" passHref>
+                        Home
                     </Link>
 
-                    <Link href="/blog" passHref>
-                        <a className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg">Blog</a>
+                    <Link href="/blog" className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg" passHref>
+                        Blog
                     </Link>
                 </div>
 
                 <div className="flex flex-col space-y-4 sm:text-left">
-                    <Link href="/music" passHref>
-                        <a className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg">Music</a>
+                    <Link href="/music" className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg" passHref>
+                        Music
                     </Link>
                 </div>
 

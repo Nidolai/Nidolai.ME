@@ -13,12 +13,10 @@ export default function BlogLayout({ children, post }: PropsWithChildren<{ post:
         <Container title={`${post.title}`} description={post.summary} date={new Date(post.publishedAt).toISOString()} type="article">
             <article className="flex flex-col items-start justify-center w-full max-w-2xl mt-4">
                 <div className="flex space-x-2 items-center mb-4">
-                    <Link href="/blog" passHref>
-                        <a className="text-gray-500 hover:text-black dark:hover:text-white transition pt-1 sm:pt-2" title="Back" aria-label="Back">
-                            <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 448 512" aria-hidden="true">
-                                <path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z" />
-                            </svg>
-                        </a>
+                    <Link href="/blog" className="text-gray-500 hover:text-black dark:hover:text-white transition pt-1 sm:pt-2" title="Back" aria-label="Back" passHref>
+                        <svg className="w-5 h-5 sm:w-7 sm:h-7" fill="currentColor" viewBox="0 0 448 512" aria-hidden="true">
+                            <path d="M447.1 256C447.1 273.7 433.7 288 416 288H109.3l105.4 105.4c12.5 12.5 12.5 32.75 0 45.25C208.4 444.9 200.2 448 192 448s-16.38-3.125-22.62-9.375l-160-160c-12.5-12.5-12.5-32.75 0-45.25l160-160c12.5-12.5 32.75-12.5 45.25 0s12.5 32.75 0 45.25L109.3 224H416C433.7 224 447.1 238.3 447.1 256z" />
+                        </svg>
                     </Link>
 
                     <h1 className="text-3xl font-bold tracking-tight sm:text-5xl dark:text-white">

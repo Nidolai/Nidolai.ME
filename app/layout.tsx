@@ -7,6 +7,7 @@ import ThemeSwitcher from "components/ThemeSwitcher"
 import '../styles/globals.css'
 
 export const metadata: Metadata = {
+    metadataBase: new URL('https://nidolai.me'),
     title: {
         template: '%s | Nidolai',
         default: 'Nidolai'
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
         siteName: 'Nidolai',
         images: [
             {
-                url: 'https://nidolai.me/avatar/Avatar-255x255.png',
+                url: '/avatar/Avatar-255x255.png',
             },
         ],
     },

@@ -28,7 +28,7 @@ export async function generateMetadata(
         slug,
     } = post;
 
-    const ogImage = 'https://nidolai.me/avatar/Avatar-255x255.png'
+    const ogImage = '/avatar/Avatar-255x255.png'
 
     return {
         title,

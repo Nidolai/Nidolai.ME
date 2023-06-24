@@ -1,8 +1,8 @@
-import { Analytics } from "@vercel/analytics/react"
-import { Metadata } from "next"
-import { Providers } from "./providers"
-import Footer from "components/Footer"
-import ThemeSwitcher from "components/ThemeSwitcher"
+import { Analytics } from '@vercel/analytics/react'
+import { Metadata } from 'next'
+import { Providers } from './providers'
+import Footer from 'components/Footer'
+import ThemeSwitcher from 'components/ThemeSwitcher'
 
 import '../styles/globals.css'
 

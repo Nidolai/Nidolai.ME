@@ -1,5 +1,5 @@
-import TopTracks from "./TopTracks";
-import { Metadata } from "next";
+import TopTracks from './TopTracks'
+import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'Music'

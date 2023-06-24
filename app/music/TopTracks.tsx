@@ -1,12 +1,12 @@
 'use client'
 
-import useSWR from "swr";
-import fetcher from "../../lib/fetcher";
-import { SpotifyTopTracks } from "../../lib/types";
+import useSWR from 'swr'
+import fetcher from '../../lib/fetcher'
+import { SpotifyTopTracks } from '../../lib/types'
 import Image from 'next/image'
 
 export default function TopTracks() {
-    const { data, error } = useSWR<SpotifyTopTracks>('/api/top-tracks', fetcher);
+    const { data, error } = useSWR<SpotifyTopTracks>('/api/top-tracks', fetcher)
 
     return (
         <>

@@ -14,7 +14,7 @@ export default function Welcome() {
                     .typeString('Building the software of <span style="color: #BE3C28;"><strong>today</strong></span>.<br/>')
                     .pauseFor(500)
                     .typeString('To help create the products of <span style="color: #009632;"><strong>tomorrow</strong></span>.')
-                    .start();
+                    .start()
             }}
         />
     )

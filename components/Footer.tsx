@@ -1,13 +1,13 @@
 'use client'
 
-import useSWR from 'swr';
-import fetcher from '../lib/fetcher';
-import Link from 'next/link';
-import { SpotifyNowPlayingSong } from '../lib/types';
-import { siGithub, siSpotify, siSteam, siMicrosoftoutlook } from 'simple-icons';
+import useSWR from 'swr'
+import fetcher from '../lib/fetcher'
+import Link from 'next/link'
+import { SpotifyNowPlayingSong } from '../lib/types'
+import { siGithub, siSpotify, siSteam, siMicrosoftoutlook } from 'simple-icons'
 
 export default function Footer() {
-    const { data, error } = useSWR<SpotifyNowPlayingSong>('/api/now-playing', fetcher);
+    const { data, error } = useSWR<SpotifyNowPlayingSong>('/api/now-playing', fetcher)
 
     return (
         <footer className="flex flex-col max-w-2xl mx-auto w-full">
@@ -95,5 +95,5 @@ export default function Footer() {
                 </div>
             </div>
         </footer>
-    );
+    )
 }

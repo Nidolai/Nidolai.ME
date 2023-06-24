@@ -1,24 +1,23 @@
 import { allBlogs } from 'contentlayer/generated'
-import Link from 'next/link';
-import Image from "next/image";
-import { notFound } from 'next/navigation';
-import { format, parseISO } from 'date-fns';
-import { MDX } from 'components/MDX';
-import { Metadata } from 'next';
-import { useMDXComponent } from 'next-contentlayer/hooks';
+import Link from 'next/link'
+import Image from 'next/image'
+import { notFound } from 'next/navigation'
+import { format, parseISO } from 'date-fns'
+import { MDX } from 'components/MDX'
+import { Metadata } from 'next'
 
 export async function generateStaticParams() {
     return allBlogs.map((post) => ({
         slug: post.slug,
-    }));
+    }))
 }
 
 export async function generateMetadata(
     { params }: any
 ): Promise<Metadata | undefined> {
-    const post = allBlogs.find((post) => post.slug === params.slug);
+    const post = allBlogs.find((post) => post.slug === params.slug)
     if (!post) {
-        return;
+        return
     }
 
     const {
@@ -26,7 +25,7 @@ export async function generateMetadata(
         publishedAt: publishedTime,
         summary: description,
         slug,
-    } = post;
+    } = post
 
     const ogImage = '/avatar/Avatar-255x255.png'
 
@@ -51,13 +50,13 @@ export async function generateMetadata(
             description,
             images: [ogImage],
         },
-    };
+    }
 }
 
 export default async function Blog({ params }: any) {
-    const post = allBlogs.find((post) => post.slug === params.slug);
+    const post = allBlogs.find((post) => post.slug === params.slug)
     const editUrl = (slug: string) =>
-        `https://github.com/Nidolai/Nidolai.ME/edit/main/_posts/${slug}.mdx`;
+        `https://github.com/Nidolai/Nidolai.ME/edit/main/_posts/${slug}.mdx`
 
     if (!post) {
         notFound()

@@ -1,9 +1,9 @@
 import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
-import rehypePrism from 'rehype-prism-plus';
-import rehypeSlug from 'rehype-slug';
+import rehypePrism from 'rehype-prism-plus'
+import rehypeSlug from 'rehype-slug'
 import rehypeAutolinkHeadings from 'rehype-autolink-headings'
-import remarkGfm from 'remark-gfm';
-import readingTime from 'reading-time';
+import remarkGfm from 'remark-gfm'
+import readingTime from 'reading-time'
 
 const computedFields: ComputedFields = {
   readingTime: { type: 'json', resolve: (doc) => readingTime(doc.body.raw) },
@@ -13,8 +13,8 @@ const computedFields: ComputedFields = {
   },
 }
 
-const Post = defineDocumentType(() => ({
-  name: 'Post',
+const Blog = defineDocumentType(() => ({
+  name: 'Blog',
   filePathPattern: `**/*.mdx`,
   contentType: 'mdx',
   fields: {
@@ -27,7 +27,7 @@ const Post = defineDocumentType(() => ({
 
 export default makeSource({
   contentDirPath: '_posts',
-  documentTypes: [Post],
+  documentTypes: [Blog],
   mdx: {
     remarkPlugins: [remarkGfm],
     rehypePlugins: [

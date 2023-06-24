@@ -23,7 +23,7 @@
     "rehype-slug": "^5.1.0",
     "remark-gfm": "^3.0.1",
     "simple-icons": "^9.2.0",
-    "swr": "^2.1.5",
+    "swr": "^2.2.0",
     "typewriter-effect": "^2.20.1"
   },
   "devDependencies": {

@@ -1,8 +1,8 @@
 'use client'
 
 import useSWR from 'swr'
-import fetcher from '../../lib/fetcher'
-import { SpotifyTopTracks } from '../../lib/types'
+import fetcher from '../lib/fetcher'
+import { SpotifyTopTracks } from '../lib/types'
 import Image from 'next/image'
 
 export default function TopTracks() {

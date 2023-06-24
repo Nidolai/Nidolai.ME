@@ -1,4 +1,4 @@
-import TopTracks from './TopTracks'
+import TopTracks from 'components/TopTracks'
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {

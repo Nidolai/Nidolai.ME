@@ -2,8 +2,12 @@
 
 import useSWR from 'swr'
 import fetcher from '../lib/fetcher'
-import { ReadableTrack, TopTracksResponse, Track } from '../lib/types'
+import { ReadableTrack} from '../lib/types'
 import Image from 'next/image'
+
+export interface TopTracksResponse {
+    tracks?: ReadableTrack[];
+}
 
 export default function TopTracks() {
     const { data, error } = useSWR<TopTracksResponse>('/api/top-tracks', fetcher)
@@ -18,7 +22,7 @@ export default function TopTracks() {
                         <div className="mt-4 text-center">Loading Spotify Tracks...</div>
                     ) : (
                         <div className="grid w-full grid-cols-1 gap-3 my-2 mt-4 sm:grid-cols-2">
-                            {data.tracks.map((track: ReadableTrack, index: number) => (
+                            {data.tracks?.map((track: ReadableTrack, index: number) => (
                                 <div className="flex flex-row text-center p-1 space-x-2 items-center" key={index}>
                                     <Image
                                         src={track.image!.url}

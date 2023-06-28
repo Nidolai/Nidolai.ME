@@ -1,22 +1,36 @@
-import { getTopTracks } from 'lib/spotify'
-import { SpotifySong } from 'lib/types'
-import { NextResponse } from 'next/server'
+import { getTopTracks, spotifyResponse } from 'lib/spotify'
+import { ReadableTrack, Track } from 'lib/types'
+
+export const runtime = 'edge';
+export const fetchCache = 'force-no-store';
+
+const tracksToReadableTracks = (track?: Track[] | null): ReadableTrack[] | null => {
+    if (!track) return null;
+    try {
+        return track.slice(0, 10).map((track: Track) => ({
+            name: track.name,
+            artist: track.artists.map((_artist) => _artist.name).join(', '),
+            album: track.album.name,
+            previewUrl: track.preview_url,
+            url: track.external_urls.spotify,
+            image: track.album.images.pop(),
+        }))
+    } catch (e) {
+        return null;
+    }
+};
 
 export async function GET() {
-    const response = await getTopTracks()
-    const { items } = await response.json()
+    const topTracks = await getTopTracks().catch(null)
+    let currentTopTracks: Track[] | null = null;
 
-    const tracks: SpotifySong = items.slice(0, 10).map((track: any) => ({
-        title: track.name,
-        artist: track.artists.map((_artist: any) => _artist.name).join(', '),
-        album: track.album.name,
-        albumImageUrl: track.album.images[0].url,
-        songUrl: track.external_urls.spotify,
-    }))
+    if (!('error' in topTracks)) {
+        currentTopTracks = topTracks.items;
+    }
 
-    return NextResponse.json({
-        tracks
-    }, {
-        status: 200
-    })
+    if (currentTopTracks) {
+        return spotifyResponse({
+            tracks: tracksToReadableTracks(currentTopTracks)
+        })
+    }
 }

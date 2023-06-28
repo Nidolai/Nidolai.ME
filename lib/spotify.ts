@@ -1,11 +1,40 @@
+import { NextResponse } from "next/server"
+import { ErrorResponse, NowPlayingResponse, TopTracksResponse } from "./types"
+
 const client_id = process.env.SPOTIFY_CLIENT_ID || ''
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET || ''
 const refresh_token = process.env.SPOTIFY_REFRESH_TOKEN || ''
 
 const basic = Buffer.from(`${client_id}:${client_secret}`).toString("base64")
-const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
-const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
 const TOKEN_ENDPOINT = `https://accounts.spotify.com/api/token`
+
+const spotifyRequestBuilder = async <T>(
+    endpoint: string,
+    method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
+    body?: Record<string, unknown>,
+): Promise<T | ErrorResponse> => {
+    const { access_token } = await getAccessToken();
+    const response = await fetch(endpoint, {
+        headers: {
+            Authorization: `Bearer ${access_token}`,
+        },
+        method,
+        body: body && method !== 'GET' ? JSON.stringify(body) : undefined,
+    });
+
+    try {
+        const json = await response.json();
+        if (response.ok) return json as T;
+        return json as ErrorResponse;
+    } catch (e) {
+        return {
+            error: {
+                message: response.statusText || 'Server error',
+                status: response.status || 500,
+            },
+        };
+    }
+};
 
 const getAccessToken = async () => {
     const response = await fetch(TOKEN_ENDPOINT, {
@@ -23,24 +52,16 @@ const getAccessToken = async () => {
     return response.json()
 }
 
-export const getNowPlaying = async () => {
-    const { access_token } = await getAccessToken()
+const NOW_PLAYING_ENDPOINT = `https://api.spotify.com/v1/me/player/currently-playing`
+export const getNowPlaying = async () => spotifyRequestBuilder<NowPlayingResponse>(NOW_PLAYING_ENDPOINT)
 
-    return fetch(NOW_PLAYING_ENDPOINT, {
-        next: { revalidate: 30 },
+const TOP_TRACKS_ENDPOINT = `https://api.spotify.com/v1/me/top/tracks`
+export const getTopTracks = async () => spotifyRequestBuilder<TopTracksResponse>(TOP_TRACKS_ENDPOINT)
+
+
+export const spotifyResponse = (data: unknown) =>
+    NextResponse.json(data, {
         headers: {
-            Authorization: `Bearer ${access_token}`
-        }
-    })
-}
-
-export const getTopTracks = async () => {
-    const { access_token } = await getAccessToken()
-
-    return fetch(TOP_TRACKS_ENDPOINT, {
-        next: { revalidate: 43200 },
-        headers: {
-            Authorization: `Bearer ${access_token}`
-        }
-    })
-}
+            'cache-control': 'public, s-maxage=60, stale-while-revalidate=30',
+        },
+    });

@@ -1,35 +1,41 @@
-import { getNowPlaying } from 'lib/spotify'
-import { SpotifyNowPlayingSong } from 'lib/types'
-import { NextResponse } from 'next/server'
+import { getNowPlaying, spotifyResponse } from 'lib/spotify'
+import { ReadableTrack, Track } from 'lib/types'
+
+export const runtime = 'edge';
+export const fetchCache = 'force-no-store';
+
+const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
+    if (!track) return null;
+    try {
+        const preAlbumImage = track.album.images.pop();
+        const albumImage = track.album.images.pop() || preAlbumImage;
+        return {
+            name: track.name,
+            artist: track.artists.map((_artist) => _artist.name).join(', '),
+            album: track.album.name,
+            previewUrl: track.preview_url,
+            url: track.external_urls.spotify,
+            image: albumImage,
+        };
+    } catch (e) {
+        return null;
+    }
+};
 
 export async function GET() {
-    const response = await getNowPlaying()
+    const nowPlaying = await getNowPlaying().catch(null)
+    let isPlaying = false
+    let nowPlayingTrack: Track | null = null;
 
-    if (response.status === 204 || response.status > 400) {
-        return NextResponse.json({ isPlaying: false }, { status: 200 })
+    if (!('error' in nowPlaying)) {
+        nowPlayingTrack = nowPlaying.item;
+        isPlaying = nowPlaying.is_playing || false;
     }
 
-    const song = await response.json()
-
-    if (song.item === null) {
-        return NextResponse.json({ isPlaying: false }, { status: 200 })
+    if (nowPlayingTrack) {
+        return spotifyResponse({
+            track: trackToReadableTrack(nowPlayingTrack),
+            isPlaying
+        })
     }
-
-    const isPlaying = song.is_playing
-    const title = song.item.name
-    const artist = song.item.artists.map((_artist: any) => _artist.name).join(', ')
-    const album = song.item.album.name
-    const albumImageUrl = song.item.album.images[0].url
-    const songUrl = song.item.external_urls.spotify
-
-    return NextResponse.json(<SpotifyNowPlayingSong>{
-        isPlaying,
-        title,
-        artist,
-        album,
-        albumImageUrl,
-        songUrl
-    }, {
-        status: 200
-    })
 }

@@ -3,11 +3,16 @@
 import useSWR from 'swr'
 import fetcher from '../lib/fetcher'
 import Link from 'next/link'
-import { SpotifyNowPlayingSong } from '../lib/types'
+import { ReadableTrack } from '../lib/types'
 import { siGithub, siSpotify, siSteam, siMicrosoftoutlook } from 'simple-icons'
 
+export interface NowPlayingResponse {
+    track?: ReadableTrack | null;
+    isPlaying?: boolean;
+}
+
 export default function Footer() {
-    const { data, error } = useSWR<SpotifyNowPlayingSong>('/api/now-playing', fetcher, { refreshInterval: 60000 })
+    const { data, error } = useSWR<NowPlayingResponse>('/api/now-playing', fetcher)
 
     return (
         <footer className="flex flex-col max-w-2xl mx-auto w-full">
@@ -31,14 +36,14 @@ export default function Footer() {
                                 </p>
                             ) : (
                                 <>
-                                    {data?.songUrl ? (
+                                    {data.isPlaying ? (
                                         <a
                                             className="text-gray-800 dark:text-gray-200 font-medium max-w-max truncate"
-                                            href={data.songUrl}
+                                            href={data.track?.url}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                         >
-                                            {data.title}
+                                            {data.track?.name}
                                         </a>
                                     ) : (
                                         <p className="text-gray-800 dark:text-gray-200 font-medium">
@@ -49,7 +54,7 @@ export default function Footer() {
                                         {' – '}
                                     </span>
                                     <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">
-                                        {data?.artist ?? 'Spotify'}
+                                        {data.track?.artist ?? 'Spotify'}
                                     </p>
                                 </>
                             )}

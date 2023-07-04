@@ -38,4 +38,9 @@ export async function GET() {
             isPlaying
         })
     }
+
+    return spotifyResponse({
+        track: null,
+        isPlaying
+    })
 }

@@ -54,7 +54,15 @@ export default function Footer() {
                                         {' – '}
                                     </span>
                                     <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">
-                                        {data.track?.artist ?? 'Spotify'}
+                                        {data.isPlaying ? (
+                                            <>
+                                            {data.track?.artist}
+                                            </>
+                                        ) : (
+                                            <>
+                                            {'Spotify'}
+                                            </>
+                                        )}
                                     </p>
                                 </>
                             )}

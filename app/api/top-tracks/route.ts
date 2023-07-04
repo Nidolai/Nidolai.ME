@@ -33,4 +33,8 @@ export async function GET() {
             tracks: tracksToReadableTracks(currentTopTracks)
         })
     }
+
+    return spotifyResponse({
+        tracks: null
+    })
 }

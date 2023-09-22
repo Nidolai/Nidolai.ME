@@ -4,20 +4,20 @@ import { Blog, allBlogs } from 'contentlayer/generated'
 import Link from 'next/link'
 import { useState } from 'react'
 
-function Post({slug, title, summary}: Blog) {
+function Post({ slug, title, summary }: Blog) {
     return (
         <Link key={slug} href={`/blog/${slug}`}>
-        <div className="w-full mb-8">
-            <div className="flex flex-col justify-between sm:flex-row">
-                <h4 className="w-full mb-2 text-lg font-medium sm:text-xl dark:text-white">
-                    {title}
-                </h4>
+            <div className="w-full mb-8">
+                <div className="flex flex-col justify-between sm:flex-row">
+                    <h4 className="w-full mb-2 text-lg font-medium sm:text-xl dark:text-white">
+                        {title}
+                    </h4>
+                </div>
+                <p className="dark:text-gray-400">
+                    {summary}
+                </p>
             </div>
-            <p className="dark:text-gray-400">
-                {summary}
-            </p>
-        </div>
-    </Link>
+        </Link>
     )
 }
 

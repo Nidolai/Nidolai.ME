@@ -2,7 +2,7 @@
 
 import useSWR from 'swr'
 import fetcher from '../lib/fetcher'
-import { ReadableTrack} from '../lib/types'
+import { ReadableTrack } from '../lib/types'
 import Image from 'next/image'
 
 export interface TopTracksResponse {

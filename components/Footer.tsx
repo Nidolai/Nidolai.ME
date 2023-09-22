@@ -56,11 +56,11 @@ export default function Footer() {
                                     <p className="text-gray-500 dark:text-gray-300 max-w-max truncate">
                                         {data.isPlaying ? (
                                             <>
-                                            {data.track?.artist}
+                                                {data.track?.artist}
                                             </>
                                         ) : (
                                             <>
-                                            {'Spotify'}
+                                                {'Spotify'}
                                             </>
                                         )}
                                     </p>

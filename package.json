@@ -22,7 +22,7 @@
     "rehype-prism-plus": "^1.6.3",
     "rehype-slug": "^6.0.0",
     "remark-gfm": "^3.0.1",
-    "simple-icons": "^9.15.0",
+    "simple-icons": "^9.16.1",
     "swr": "^2.2.2",
     "typewriter-effect": "^2.20.1"
   },

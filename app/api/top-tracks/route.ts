@@ -21,20 +21,12 @@ const tracksToReadableTracks = (track?: Track[] | null): ReadableTrack[] | null 
 };
 
 export async function GET() {
-    const topTracks = await getTopTracks().catch(null)
-    let currentTopTracks: Track[] | null = null;
+    const topTracks = await getTopTracks().catch(null);
+    const isError = 'error' in topTracks;
 
-    if (!('error' in topTracks)) {
-        currentTopTracks = topTracks.items;
-    }
-
-    if (currentTopTracks) {
-        return spotifyResponse({
-            tracks: tracksToReadableTracks(currentTopTracks)
-        })
-    }
+    const currentTopTracks = !isError ? tracksToReadableTracks(topTracks.items) : null;
 
     return spotifyResponse({
-        tracks: null
+        tracks: currentTopTracks
     })
 }

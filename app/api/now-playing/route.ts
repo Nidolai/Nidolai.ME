@@ -23,24 +23,14 @@ const trackToReadableTrack = (track?: Track | null): ReadableTrack | null => {
 };
 
 export async function GET() {
-    const nowPlaying = await getNowPlaying().catch(null)
-    let isPlaying = false
-    let nowPlayingTrack: Track | null = null;
+    const nowPlaying = await getNowPlaying().catch(null);
+    const isError = 'error' in nowPlaying;
 
-    if (!('error' in nowPlaying)) {
-        nowPlayingTrack = nowPlaying.item;
-        isPlaying = nowPlaying.is_playing || false;
-    }
-
-    if (nowPlayingTrack) {
-        return spotifyResponse({
-            track: trackToReadableTrack(nowPlayingTrack),
-            isPlaying
-        })
-    }
+    const nowPlayingTrack = !isError ? trackToReadableTrack(nowPlaying.item) : null;
+    const isPlaying = !isError && nowPlaying.is_playing;
 
     return spotifyResponse({
-        track: null,
+        track: nowPlayingTrack,
         isPlaying
     })
 }

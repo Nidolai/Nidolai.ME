@@ -2,15 +2,11 @@
 
 import useSWR from 'swr'
 import fetcher from '../lib/fetcher'
-import { ReadableTrack } from '../lib/types'
+import { ReadableTrack, TopTracksAPIResponse } from '../types/spotify'
 import Image from 'next/image'
 
-export interface TopTracksResponse {
-    tracks?: ReadableTrack[];
-}
-
 export default function TopTracks() {
-    const { data, error } = useSWR<TopTracksResponse>('/api/top-tracks', fetcher)
+    const { data, error } = useSWR<TopTracksAPIResponse>('/api/top-tracks', fetcher)
 
     return (
         <>

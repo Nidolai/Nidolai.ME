@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server"
-import { ErrorResponse, NowPlayingResponse, TopTracksResponse } from "./types"
+import { ErrorResponse, NowPlayingResponse, TopTracksResponse } from "../types/spotify"
 
 const client_id = process.env.SPOTIFY_CLIENT_ID || ''
 const client_secret = process.env.SPOTIFY_CLIENT_SECRET || ''

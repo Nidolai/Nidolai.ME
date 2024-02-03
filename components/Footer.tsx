@@ -3,16 +3,11 @@
 import useSWR from 'swr'
 import fetcher from '../lib/fetcher'
 import Link from 'next/link'
-import { ReadableTrack } from '../lib/types'
+import { NowPlayingAPIResponse, ReadableTrack } from '../types/spotify'
 import { siGithub, siSpotify, siSteam, siMicrosoftoutlook } from 'simple-icons'
 
-export interface NowPlayingResponse {
-    track?: ReadableTrack | null;
-    isPlaying?: boolean;
-}
-
 export default function Footer() {
-    const { data, error } = useSWR<NowPlayingResponse>('/api/now-playing', fetcher)
+    const { data, error } = useSWR<NowPlayingAPIResponse>('/api/now-playing', fetcher)
 
     return (
         <footer className="flex flex-col max-w-2xl mx-auto w-full">

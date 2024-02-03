@@ -1,21 +1,4 @@
-// API responses
-export interface ErrorResponse {
-    error: {
-        status: number;
-        message: string;
-    };
-}
-
-export interface TopTracksResponse {
-    items: Track[];
-}
-
-export interface NowPlayingResponse {
-    is_playing: boolean;
-    item: Track;
-}
-
-// interfaces and types for data returned by API's
+//#region Entity
 export type SpotifyEntityType = 'album' | 'artist' | 'playlist' | 'track';
 export type SpotifyEntityUri = `spotify:${SpotifyEntityType}:${string}`;
 
@@ -34,7 +17,9 @@ export interface SpotifyEntity {
     images: Array<Image>;
     external_urls: { spotify: string };
 }
+//#endregion
 
+//#region Entities
 interface Album extends SpotifyEntity {
     type: 'album';
     popularity: number;
@@ -64,3 +49,31 @@ export interface ReadableTrack {
     url: string;
     image?: Image;
 }
+//#endregion
+
+//#region API responses
+export interface ErrorResponse {
+    error: {
+        status: number;
+        message: string;
+    };
+}
+
+export interface TopTracksResponse {
+    items: Track[];
+}
+
+export interface NowPlayingResponse {
+    is_playing: boolean;
+    item: Track;
+}
+
+export type TopTracksAPIResponse = {
+    tracks?: ReadableTrack[];
+}
+
+export type NowPlayingAPIResponse = {
+    track?: ReadableTrack | null;
+    isPlaying?: boolean;
+}
+//#endregion

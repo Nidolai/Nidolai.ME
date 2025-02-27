@@ -1,11 +1,9 @@
-const { withContentlayer } = require('next-contentlayer2')
-
 /** @type {import('next').NextConfig} */
-module.exports = withContentlayer({
+module.exports = {
   reactStrictMode: true,
   images: {
     domains: [
       'i.scdn.co' // Spotify Album Art
     ]
   }
-})
+}

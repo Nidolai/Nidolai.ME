@@ -72,10 +72,6 @@ export default function Footer() {
                     <Link href="/" className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg" passHref>
                         Home
                     </Link>
-
-                    <Link href="/blog" className="text-gray-500 hover:text-gray-700 dark:hover:text-white transition text-lg" passHref>
-                        Blog
-                    </Link>
                 </div>
 
                 <div className="flex flex-col space-y-4 sm:text-left">

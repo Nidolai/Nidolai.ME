@@ -3,8 +3,8 @@
 import useSWR from 'swr'
 import fetcher from '../lib/fetcher'
 import Link from 'next/link'
-import { NowPlayingAPIResponse, ReadableTrack } from '../types/spotify'
-import { siGithub, siSpotify, siSteam, siMailboxdotorg } from 'simple-icons'
+import { NowPlayingAPIResponse } from '../types/spotify'
+import { siGithub, siSpotify, siSteam, siGmail } from 'simple-icons'
 
 export default function Footer() {
     const { data, error } = useSWR<NowPlayingAPIResponse>('/api/now-playing', fetcher)
@@ -93,7 +93,7 @@ export default function Footer() {
                     </a>
                     <a className="text-gray-500 hover:text-black dark:hover:text-white transition" href="mailto:nidolai@nidolai.me" title="Contact me" aria-label="Contact me">
                         <svg className="w-8 h-8 sm:w-6 sm:h-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-                            <path d={siMailboxdotorg.path} />
+                            <path d={siGmail.path} />
                         </svg>
                     </a>
                 </div>

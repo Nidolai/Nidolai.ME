@@ -2,8 +2,11 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: [
-      'i.scdn.co' // Spotify Album Art
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'i.scdn.co' // Spotify Album Art
+      }
     ]
   }
 }

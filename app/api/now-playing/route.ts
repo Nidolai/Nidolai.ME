@@ -1,5 +1,5 @@
-import { getNowPlaying, spotifyResponse } from 'lib/spotify'
-import { ReadableTrack, Track } from 'types/spotify'
+import { getNowPlaying, spotifyResponse } from '../../../lib/spotify'
+import { ReadableTrack, Track } from '../../../types/spotify'
 
 export const runtime = 'edge';
 export const fetchCache = 'force-no-store';
